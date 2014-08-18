@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 20140818132510) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "flats_id"
+    t.integer  "flat_id"
   end
 
-  add_index "users", ["flats_id"], name: "index_users_on_flats_id", using: :btree
+  add_index "users", ["flat_id"], name: "index_users_on_flat_id", using: :btree
 
 end
