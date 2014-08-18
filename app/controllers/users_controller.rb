@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    @user = User.all
+  end
+
   def show
     @user = User.find(params[:id])
   end
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
       user = User.find(id)
       user.update_attribute(:flat_id,params[:flat_id])
     end
-    render 'show'
+    render 'index'
   end
 
   private
