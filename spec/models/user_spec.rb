@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  it "Don't create a user without name and email" do
+  it "Don't create a user without name and email and flat id" do
     user = User.new
     expect(user.valid?).to eq(false)
   end
