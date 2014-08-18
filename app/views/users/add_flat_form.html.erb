@@ -1,0 +1,8 @@
+<%= form_tag update_flat_id_path, method: :put do %>
+  <% @users.each do |user| %>
+    <%= label_tag user.email %> <%= check_box_tag 'to_add[]', user.id, false, class: 'add_user' %>
+    <br>
+  <% end %>
+  <%= hidden_field_tag 'flat_id', params[:id] %>
+  <div><%= submit_tag 'Save' %></div>
+<% end %>

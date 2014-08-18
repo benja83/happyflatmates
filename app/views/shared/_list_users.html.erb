@@ -1,0 +1,11 @@
+<% users = User.all %>
+
+<ul>
+  <% users.each do |user| %>
+    <% if user.flat_id %>
+      <li>
+        <%= link_to user.email, flats_path %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

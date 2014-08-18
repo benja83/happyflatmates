@@ -1,0 +1,17 @@
+<% if @errors %>
+<ul>
+  <% @errors.each do |error| %>
+  <li> <%= error %> </li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br/>
+  <%= f.label :email %>
+  <%= f.text_field :email %> <br/>
+  <%= f.submit "Save", class: "save" %>
+<% end %>
+
+<%= render '/shared/list_users' %>

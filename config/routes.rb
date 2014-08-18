@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
-root 'events#index'
+root 'users#new'
 
 resources :events
+resources :flats
+resources :users
+
+get '/add_flat/:id' => 'users#add_flat'
+put '/update_flat_id' => 'users#update_flat_id'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

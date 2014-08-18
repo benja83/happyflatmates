@@ -1,0 +1,14 @@
+<header>
+  <h1>Flat list</h1>
+</header>
+<div id="listcontainer">
+  <ul class="listindex">
+    <% @flats.each do |flat| %>
+      <li class="index_item <%= cycle("dark","light") %>">
+          <h4><%= flat.name %> at <%= flat.address %></h4>
+          <%= link_to "Add users to this flat", "/add_flat/#{flat.id}" %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
