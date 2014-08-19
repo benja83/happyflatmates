@@ -23,74 +23,72 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   context "show method" do
+
+    before(:each) do
+      @user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
+    end
+
     it "renders the show template" do
-      user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
-      get :show, id: user.id
+      get :show, id: @user.id
       expect(response).to render_template("show")
     end
 
     it "responds successfully with an HTTP 200 status code" do
-      user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
-      get :show, id: user.id
+      get :show, id: @user.id
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
 
     it "loads the user into @user" do
-      user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
-      get :show, id: user.id
-      expect(assigns(:user)).to eq(user)
+      get :show, id: @user.id
+      expect(assigns(:user)).to eq(@user)
     end
 
     it "receives status 404 error - not found" do
-      user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
       get :show, id: 100
       expect(response.status).to eq(404)
     end
   end
 
   context "add_flat" do
+
+    before(:each) do
+      @users = User.all
+      @flat = Flat.create name: "marina", address:"carrer de la marina 200 Barcelona"
+      get :add_flat, id: @flat.id
+    end
+
     it "renders the add_flat_form template" do
-      users = User.all
-      flat = Flat.create name: "marina", address:"carrer de la marina 200 Barcelona"
-      get :add_flat, id: flat.id
       expect(response).to render_template("add_flat_form")
     end
 
     it "responds successfully with an HTTP 200 status code" do
-      users = User.all
-      flat = Flat.create name: "marina", address:"carrer de la marina 200 Barcelona"
-      get :add_flat, id: flat.id
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
 
     it "loads the users into @users" do
-      users = User.all
-      flat = Flat.create name: "marina", address:"carrer de la marina 200 Barcelona"
-      get :add_flat, id: flat.id
-      expect(assigns(:users)).to eq(users)
+      expect(assigns(:users)).to eq(@users)
     end
   end
 
   context "update_flat_id" do
+
+    before(:each) do
+      @user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
+      @users=[]
+      @users.push(@user.id)
+      @flat = Flat.create name: "marina", address:"carrer de la marina 200 Barcelona"
+      put :update_flat_id, {:to_add => @users, :flat_id => @flat.id}
+    end
+
     it "renders the update_flat_id template for specific user" do
-      user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
-      users=[]
-      users.push(user.id)
-      flat = Flat.create name: "marina", address:"carrer de la marina 200 Barcelona"
-      put :update_flat_id, {:to_add => users, :flat_id => flat.id}
       expect(response).to render_template('index')
     end
 
     it "should update information changed" do
-      user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
-      users=[]
-      users.push(user.id)
-      flat = Flat.create name: "marina", address:"carrer de la marina 200 Barcelona"
-      put :update_flat_id, {:to_add => users, :flat_id => flat.id}
-      user.reload
-      expect(user.flat_id == flat.id).to eq(true)
+      @user.reload
+      expect(@user.flat_id == @flat.id).to eq(true)
     end
   end
 
