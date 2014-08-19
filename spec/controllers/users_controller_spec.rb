@@ -2,6 +2,26 @@ require 'rails_helper'
 
 RSpec.describe UsersController, :type => :controller do
 
+  context "index method" do
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template("index")
+    end
+
+    it "responds successfully with an HTTP 200 status code" do
+      get :index
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it "loads all of the locations the users" do
+      user1 = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
+      user2 = User.create name:"kiko", email: "kiko@gmail.com"
+      get :index
+      expect(assigns(:users)).to match_array([user1, user2])
+    end
+  end
+
   context "show method" do
     it "renders the show template" do
       user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
@@ -22,7 +42,7 @@ RSpec.describe UsersController, :type => :controller do
       expect(assigns(:user)).to eq(user)
     end
 
-    xit "receives status 404 error - not found" do
+    it "receives status 404 error - not found" do
       user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
       get :show, id: 100
       expect(response.status).to eq(404)
@@ -88,25 +108,25 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   context "create method" do
-    xit "render the show template after creating a user" do
-      user = User.new
-      post :create, user: attributes_for(:user)
-      expect(response).to redirect_to(action: 'index')
+    it "render the show template after creating a user" do
+      @user = User.new name:"Jane", email: "jane.buzgsdggszlightyear@gmail.com"
+      post :create, user: {:name => @user.name, :email => @user.email}
+      expect(response).to redirect_to(User.last)
     end
 
-    xit "make a new user" do
-      user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com"
-      expect{post :create, user: attributes_for(:user)}.to change(User,:count).by(1)
+    it "make a new user" do
+      @user = User.new name:"Jane", email: "jane.buzgsdggszlightyear@gmail.com"
+      expect{post :create, user: {:name => @user.name, :email => @user.email}}.to change(User,:count).by(1)
     end
 
-    xit "should not create new entry with wrong information" do
+    it "should not create new entry with wrong information" do
       user = User.new name:"Jane", email: "jane.buzzlightyear"
-      expect{post :create, user: attributes_for(:user, email: 'jane.buzzlightyear')}.to_not change(User,:count)
+      expect{post :create, user: {:name => user.name, :email => user.email}}.to_not change(User,:count)
     end
 
-    xit "should not create new entry with wrong information" do
-      user = build(:user)
-      post :create, user: attributes_for(:user, name: 'Gaud!')
+    it "should not create new entry with wrong information" do
+      @user = User.new name:"Jane", email: "jane.buzgsdggszlightyeargmail.com"
+      post :create, user: {:name => @user.name, :email => @user.email}
       expect(response).to render_template('new')
     end
 

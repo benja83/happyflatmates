@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    render plain: 'Sorry, user not found', status: 404 unless @user
   end
 
 
@@ -18,7 +20,7 @@ class UsersController < ApplicationController
     @user.save
     if @user.save
       flash[:notice] = "User created!"
-      redirect_to action:'show', controller:'users'
+      redirect_to( action: 'show', controller: 'users', id: @user.id)
     else
       @errors = @user.errors.full_messages
       render 'new'
