@@ -5,7 +5,10 @@
   <ul class="listindex">
     <% @flats.each do |flat| %>
       <li class="index_item <%= cycle("dark","light") %>">
-          <h4><%= flat.name %> at <%= flat.address %></h4>
+          <h4>
+            <%= flat.name %> at <%= flat.address %>
+            <%= link_to "view this flat", flat_path(flat.id)%>
+          </h4>
           <%= link_to "Add users to this flat", "/add_flat/#{flat.id}" %>
       </li>
     <% end %>
