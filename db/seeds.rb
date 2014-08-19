@@ -13,4 +13,4 @@ user3 = User.create name:"Elena", email: "elena@gmail.com", flat_id: flat.id
 user4 = User.create name:"Cat", email: "cat@gmail.com", flat_id: flat.id
 user5 = User.create name:"Ben", email: "tarennebenjamin@gmail.com", flat_id: flat.id
 
-Event.create start: DateTime.now, end: DateTime.now + 1.hour, title: "first"
+Event.create start: DateTime.now, end: DateTime.now + 1.hour, title: "first", flat_id: flat.id

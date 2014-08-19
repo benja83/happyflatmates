@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
 root 'home#welcome'
 
-resources :events
-resources :flats
+
+resources :flats do
+  resources :events
+end
 resources :users
 
 get '/add_flat/:id' => 'users#add_flat'

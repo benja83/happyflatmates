@@ -117,3 +117,106 @@ body {
     border-radius: 50%;
   }
 }
+
+//***************STYLING CALENDAR*************//
+
+.fc {
+  direction: ltr;
+  text-align: left;
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+}
+
+html .fc {
+  font-size: 1em;
+}
+
+.fc {
+  table {
+    font-size: 1em;
+  }
+  td, th {
+    padding: 0;
+    vertical-align: top;
+  }
+}
+
+/* Header
+------------------------------------------------------------------------*/
+
+.fc-header td {
+  white-space: nowrap;
+}
+
+.fc-header-left {
+  width: 25%;
+  text-align: left;
+}
+
+.fc-header-center {
+  text-align: center;
+}
+
+.fc-header-right {
+  width: 25%;
+  text-align: right;
+}
+
+.fc-header-title {
+  display: inline-block;
+  vertical-align: top;
+  h2 {
+    margin-top: 0;
+    white-space: nowrap;
+  }
+}
+
+.fc .fc-header-space {
+  padding-left: 10px;
+}
+
+.fc-header {
+  .fc-button {
+    margin-bottom: 1em;
+    vertical-align: top;
+    margin-right: -1px;
+  }
+  .fc-corner-right, .ui-corner-right {
+    /* theme */
+    margin-right: 0;
+    /* back to normal */
+  }
+  .fc-state-hover, .ui-state-hover {
+    z-index: 2;
+  }
+  .fc-state-down {
+    z-index: 3;
+  }
+  .fc-state-active, .ui-state-active {
+    z-index: 4;
+  }
+}
+
+/* buttons edges butting together */
+
+/* button layering (for border precedence) */
+
+/* Content
+------------------------------------------------------------------------*/
+
+.fc-content {
+  position: relative;
+  z-index: 1;
+  /* scopes all other z-index's to be inside this container */
+  clear: both;
+  zoom: 1;
+  /* for IE7, gives accurate coordinates for [un]freezeContentHeight */
+}
+
+.fc-view {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}

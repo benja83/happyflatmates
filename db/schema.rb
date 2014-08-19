@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818132510) do
+ActiveRecord::Schema.define(version: 20140819151419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,10 @@ ActiveRecord::Schema.define(version: 20140818132510) do
     t.boolean  "all_day",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "flat_id"
   end
+
+  add_index "events", ["flat_id"], name: "index_events_on_flat_id", using: :btree
 
   create_table "flats", force: true do |t|
     t.string   "name"
