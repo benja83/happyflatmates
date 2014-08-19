@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-root 'users#new'
+root 'home#welcome'
 
 resources :events
 resources :flats
