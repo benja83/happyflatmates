@@ -7,6 +7,7 @@ class FlatsController < ApplicationController
     @flat = Flat.find(params[:id])
     @users = User.where(:flat_id == params[:id])
     @events  = Event.where(:flat_id == params[:id])
+    @event = Event.new
   end
 
   private

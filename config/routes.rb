@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 root 'home#welcome'
-
+get 'contact' =>'home#contact'
 
 resources :flats do
   resources :events
