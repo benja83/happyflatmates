@@ -1,3 +1,10 @@
-<h1>hola</h1>
+<h4>Next event</h4>
 
-<div id='calendar'></div>
+<ul class="nav nav-sidebar">
+  <li class="active"><a href="#">Flat mates</a></li>
+  <%  @events.each do |event| %>
+    <li>
+      <%= event.title %>
+    </li>
+  <% end %>
+</ul>

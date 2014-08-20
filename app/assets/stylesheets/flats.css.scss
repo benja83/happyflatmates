@@ -118,6 +118,61 @@ body {
   }
 }
 
+.sidebar-bottom-left {
+position: fixed;
+bottom: 0;
+left: 198px;
+z-index: 1000;
+display: block;
+padding: 0 20px 20px 20px;
+overflow-x: hidden;
+overflow-y: auto;
+background-color: #0bc991;
+border-right: 1px solid #eee;
+transition: height .1s ease-out, opacity .1s ease-out;
+-moz-transition: height .1s ease-out, opacity .1s ease-out;  /* Firefox 4 */
+-webkit-transition: height .1s  ease-out, opacity .1s ease-out;  /* Safari and Chrome */
+-o-transition: height .1s  ease-out, opacity .1s ease-out;  /* Opera */
+  &:hover {
+    height: 60%;
+    opacity: .95;
+  }
+}
+
+.sidebar-bottom-right {
+position: fixed;
+bottom: 0;
+right: 0;
+z-index: 1000;
+display: block;
+padding: 0;
+overflow-x: hidden;
+overflow-y: auto;
+background-color: #ba68f9;
+border-right: 1px solid #eee;
+transition: height .1s ease-out, opacity .1s ease-out;
+-moz-transition: height .1s ease-out, opacity .1s ease-out;  /* Firefox 4 */
+-webkit-transition: height .1s  ease-out, opacity .1s ease-out;  /* Safari and Chrome */
+-o-transition: height .1s  ease-out, opacity .1s ease-out;  /* Opera */
+  &:hover {
+    height: 60%;
+    opacity: .95;
+    .disp {
+      display: block;
+    }
+  }
+  .disp {
+    display: none
+  }
+}
+.active:first-child {
+    display: block;
+}
+
+.reset-margin{
+  margin: 0;
+}
+
 .sidebar-left {
 position: fixed;
 top: 51px;
@@ -128,9 +183,48 @@ display: block;
 padding: 20px;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: pink;
+background-color: #f6c942;
 border-right: 1px solid #eee;
 }
+
+.sidebar-left-active {
+  position: fixed;
+  top: 51px;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  display: block;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #f6c942;
+  border-right: 1px solid #eee;
+  opacity: 0.95;
+  -webkit-animation: ACTIVE-SIDEBAR 1s;
+  -moz-animation:    ACTIVE-SIDEBAR 1s;
+  -o-animation:      ACTIVE-SIDEBAR 1s;
+  animation:         ACTIVE-SIDEBAR 1s;
+}
+
+@-webkit-keyframes ACTIVE-SIDEBAR {
+  0%   { opacity: 0; }
+  100% { opacity: 0.95; }
+}
+@-moz-keyframes ACTIVE-SIDEBAR {
+  0%   { opacity: 0; }
+  100% { opacity: 0.95; }
+}
+@-o-keyframes ACTIVE-SIDEBAR {
+  0%   { opacity: 0; }
+  100% { opacity: 0.95; }
+}
+@keyframes ACTIVE-SIDEBAR {
+  0%   { opacity: 0; }
+  100% { opacity: 0.95; }
+}
+
+
+
 
 //***************STYLING CALENDAR*************//
 /*

@@ -6,12 +6,18 @@
 </ul>
 <% end %>
 
-<h2>Create a new event</h2>
+<h4 class="form-signup-heading">Create a new event</h4>
 
-<%= form_for [@flat, @event] do |f| %>
-  <%= f.label (:title) %>
-  <%= f.text_field (:title) %> <br/>
-  <%= f.datetime_select (:start) %> <br/>
-  <%= f.datetime_select (:end) %> <br/>
-  <%= f.submit "Save", class: "save" %>
+<%= form_for [@flat, @event],html: {class: "form-group form", role: "form"} do |f| %>
+  <%= f.text_field :title, class: "form-control", placeholder: "title" %> <br/>
+  <%= f.label 'from' %><br>
+  <%= f.datetime_select :start,:use_month_numbers => true %> <br/>
+  <%= f.label 'to' %><br>
+  <%= f.datetime_select :end, :use_month_numbers => true %> <br/>
+  <br>
+  <%= f.submit "Save", class: "btn btn-lg btn-primary btn-block"  %>
 <% end %>
+<%= button_tag "close", :onclick => "return closeForm();", class: "btn btn-lg btn-primary btn-block"  %>
+
+
+

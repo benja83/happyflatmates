@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def index
     flat=Flat.find(params[:flat_id])
-    @events = Event.all
+    @events = flat.events
   end
 
   def new
