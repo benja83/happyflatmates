@@ -5,7 +5,7 @@ get 'contact' =>'home#contact'
 
 resources :flats do
   resources :events
-  resources :pruchases
+  resources :purchases
 
 end
 resources :users
