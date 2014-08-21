@@ -13,7 +13,13 @@
             <%= link_to purchase.name, flat_purchase_path(params[:id],purchase) %>
           </td>
           <td class="col-sm-9 navbar-form">
-            <%= render 'purchases/edit' %>
+            <%= form_for [@flat, purchase],html: {class: "navbar-form reset-margin", role: "form"} do |f| %>
+                <%= f.text_field :price, class: "form-control", placeholder: "price" %>
+                <%= f.hidden_field :flat_id, :value => @flat.id %>
+                <%= f.hidden_field :buyer, :value => User.first.id %>
+                <%= f.hidden_field :name, :value => purchase.name %>
+                <%= f.submit "I bought it", class: "form-control"  %>
+            <% end %>
           </td>
         </tr>
 
