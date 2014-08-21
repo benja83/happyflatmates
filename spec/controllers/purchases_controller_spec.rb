@@ -17,7 +17,7 @@ RSpec.describe PurchasesController, :type => :controller do
       expect(response).to have_http_status(200)
     end
 
-    it "loads all of the events" do
+    it "loads only the pending purchase" do
       purchase1 = Purchase.create name: 'oil', flat_id: @flat.id
       purchase2 = Purchase.create name: 'oil', pending: 'false', flat_id: @flat.id
       expect(assigns(:purchases)).to match_array([purchase1])
@@ -31,11 +31,11 @@ RSpec.describe PurchasesController, :type => :controller do
       get :new, flat_id: @flat.id
     end
 
-    xit "renders the new template" do
+    it "renders the new template" do
       expect(response).to render_template("new")
     end
 
-    xit "responds successfully with an HTTP 200 status code" do
+    it "responds successfully with an HTTP 200 status code" do
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
@@ -45,29 +45,24 @@ RSpec.describe PurchasesController, :type => :controller do
 
     before(:each) do
       @flat = Flat.create name: "marina", address:"carrer de la marina 200 Barcelona"
+      @purchase = Purchase.create name: 'oil', flat_id: @flat.id
     end
 
-    xit "render the show flat template after creating a event" do
-      event = Event.create start: DateTime.now, end: DateTime.now + 1.hour, title: "first", flat_id: @flat.id
-
-      post :create, flat_id: @flat.id, event: {start: event.start, end: event.end, title: event.title}
+    it "render the show flat template after creating a event" do
+      post :create, flat_id: @flat.id, purchase: {name: @purchase.id,flat_id: @flat.id}
       expect(response).to redirect_to(flat_path(@flat.id))
     end
 
-    xit "make a new location" do
-      event = Event.create start: DateTime.now, end: DateTime.now + 1.hour, title: "first", flat_id: @flat.id
-
-      expect{post :create, flat_id: @flat.id, event: {start: event.start, end: event.end, title: event.title}}.to change(Event,:count).by(1)
+    it "make a new location" do
+      expect{post :create, flat_id: @flat.id, purchase: {name: @purchase.id,flat_id: @flat.id}}.to change(Purchase,:count).by(1)
     end
 
-    xit "should not create new entry with wrong information" do
-      event = Event.create start: DateTime.now, end: DateTime.now + 1.hour, flat_id: @flat.id
-      expect{post :create, flat_id: @flat.id, event: {start: event.start, end: event.end}}.to_not change(Event,:count)
+    it "should not create new entry with wrong information" do
+      expect{post :create, flat_id: @flat.id, purchase: {flat_id: @flat.id}}.to_not change(Purchase,:count)
     end
 
-    xit "should not create new entry with wrong information" do
-      event = Event.create start: DateTime.now, end: DateTime.now + 1.hour, flat_id: @flat.id
-      post :create, flat_id: @flat.id, event: {start: event.start, end: event.end}
+    it "should not create new entry with wrong information and render new template" do
+      post :create, flat_id: @flat.id, purchase: {flat_id: @flat.id}
       expect(response).to render_template('new')
     end
   end

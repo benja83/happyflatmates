@@ -1,7 +1,10 @@
-<h4>Shopping List</h4>
-
-<ul class="nav nav-sidebar">
-  <li class="active"><a href="#">Shopping List</a></li>
+<ul class="nav nav-sidebar reset-margin">
+  <li class="active">
+    <a id="shopping-list">
+      Shopping List
+    </a>
+    <%= render 'purchases/new' %>
+  </li>
   <%  @purchases.each do |purchase| %>
     <li>
       <%= purchase.name %>
