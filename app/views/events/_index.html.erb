@@ -1,9 +1,9 @@
 <ul class="nav nav-sidebar reset-margin">
-  <li class="active"><a href="#">Next event</a></li>
+  <li class="active"><a id="next-event">Next event</a></li>
   <%  @events.each do |event| %>
     <li class="disp">
 
-      <%= link_to event.title, flat_event_path(event, params[:id]) %>
+      <%= link_to event.title, flat_event_path(params[:id],event) %>
     </li>
   <% end %>
 </ul>

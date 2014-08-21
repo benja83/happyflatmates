@@ -17,7 +17,7 @@
         <div class="form-group">
           <input type="password" placeholder="Password" class="form-control">
         </div>
-        <button type="submit" class="btn btn-success">Sign in</button>
+        <button type="submit" class="btn btn-success"><%= link_to 'Sign in', flat_path(User.first.flat_id)%></button>
       </form>
     </nav><!--/.navbar-collapse -->
   </div>
