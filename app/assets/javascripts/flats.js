@@ -7,9 +7,8 @@ $('.sidebar-bottom-right').hover(
   }
 );
 $('.sidebar-bottom-left').hover(
-  function(event){
+  function(){
     $('.sidebar-bottom-left').addClass('sidebar-bottom-left-active').removeClass('sidebar-bottom-left');
-    event.stopPropagation();
   },
   function(){
     $('.sidebar-bottom-left-active').addClass('sidebar-bottom-left').removeClass('sidebar-bottom-left-active');

@@ -7,7 +7,18 @@
   </li>
   <%  @purchases.each do |purchase| %>
     <li class="disp">
-      <%= link_to purchase.name, flat_purchase_path(params[:id],purchase) %>
+      <table>
+        <tr>
+          <td class="col-sm-3">
+            <%= link_to purchase.name, flat_purchase_path(params[:id],purchase) %>
+          </td>
+          <td class="col-sm-9 navbar-form">
+            <%= render 'purchases/edit' %>
+          </td>
+        </tr>
+
+      </table>
+
     </li>
   <% end %>
 </ul>
