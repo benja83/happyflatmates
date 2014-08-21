@@ -6,8 +6,8 @@
     <%= render 'purchases/new' %>
   </li>
   <%  @purchases.each do |purchase| %>
-    <li>
-      <%= purchase.name %>
+    <li class="disp">
+      <%= link_to purchase.name, flat_purchase_path(params[:id],purchase) %>
     </li>
   <% end %>
 </ul>
