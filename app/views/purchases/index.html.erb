@@ -1,10 +1,24 @@
 <h4>Shopping List</h4>
 
 <ul class="nav nav-sidebar">
-  <li class="active"><a href="#">Shopping List</a></li>
-  <%  @purchases.each do |purchase| %>
-    <li>
-      <%= purchase.name %>
-    </li>
+  <li class="active">
+    <a href="#">Shopping List</a>
+  </li>
+  <%= form_tag update_status_purchases_path, method: :patch, html: {class: "navbar-form reset-margin", role: "form"} do %>
+    <%  @purchases.each do |purchase| %>
+      <li class="disp">
+        <table>
+          <tr>
+            <td class="col-sm-3">
+              <%= link_to purchase.name, flat_purchase_path(params[:flat_id],purchase) %>
+            </td>
+            <td class="col-sm-9">
+              <%= check_box_tag 'bought[]', purchase.id, false, class: '' %>
+            </td>
+          </tr>
+        </table>
+      </li>
+    <% end %>
+    <%= hidden_field_tag :flat_id, params[:flat_id] %>
+    <div><%= submit_tag 'I bought it' %></div>
   <% end %>
-</ul>

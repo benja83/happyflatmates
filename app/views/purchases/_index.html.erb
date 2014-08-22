@@ -5,27 +5,24 @@
     </a>
     <%= render 'purchases/new' %>
   </li>
-  <%  @purchases.each do |purchase| %>
-    <li class="disp">
-      <table>
-        <tr>
-          <td class="col-sm-3">
-            <%= link_to purchase.name, flat_purchase_path(params[:id],purchase) %>
-          </td>
-          <td class="col-sm-9 navbar-form">
-            <%= form_for [@flat, purchase],html: {class: "navbar-form reset-margin", role: "form"} do |f| %>
-                <%= f.text_field :price, class: "form-control", placeholder: "price" %>
-                <%= f.hidden_field :flat_id, :value => @flat.id %>
-                <%= f.hidden_field :buyer, :value => User.first.id %>
-                <%= f.hidden_field :name, :value => purchase.name %>
-                <%= f.hidden_field :pending, :value => false %>
-                <%= f.submit "I bought it", class: "form-control"  %>
-            <% end %>
-          </td>
-        </tr>
-
-      </table>
-
-    </li>
+  <%= form_tag update_status_purchases_path, method: :patch,html: {class: "navbar-form reset-margin", role: "form"} do %>
+    <%  @purchases.each do |purchase| %>
+      <li class="disp">
+        <table>
+          <tr>
+            <td class="col-sm-3">
+              <%= link_to purchase.name, flat_purchase_path(params[:id],purchase) %>
+            </td>
+            <td class="col-sm-9">
+              <%= check_box_tag 'bought[]', purchase.id, false, class: '' %>
+            </td>
+          </tr>
+        </table>
+      </li>
+    <% end %>
+    <%= hidden_field_tag :flat_id, params[:id] %>
+      <li class="disp">
+        <%= submit_tag 'I bought it' %>
+      </li>
   <% end %>
 </ul>

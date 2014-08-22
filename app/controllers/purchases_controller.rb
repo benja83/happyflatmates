@@ -22,26 +22,19 @@ class PurchasesController < ApplicationController
     end
   end
 
-  def edit
+  def update_status_purchases
     @flat = Flat.find(params[:flat_id])
-    @purchase = Purchase.find(params[:id])
-  end
+    purchases = params[:bought]
+    purchases.each do |id|
+      Purchase.find(id).update_attribute(:pending, false)
 
-  def update
-    @flat = Flat.find(params[:flat_id])
-    @purchase = Purchase.find(params[:id])
-    if @purchase.update_attributes(purchase_params)
-        redirect_to flat_path(@flat.id)
-        flash[:notice] = "Visit updated!"
-    else
-        @errors = @purchase.errors.full_messages
-        render 'edit'
     end
+    redirect_to flat_path(@flat.id)
   end
 
   private
 
     def purchase_params
-      params.require(:purchase).permit(:flat_id, :name, :price, :buyer, :pending)
+      params.require(:purchase).permit(:flat_id, :name, :pending)
     end
 end

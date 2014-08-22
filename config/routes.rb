@@ -12,6 +12,8 @@ resources :users
 
 get '/add_flat/:id' => 'users#add_flat'
 put '/update_flat_id' => 'users#update_flat_id'
+patch '/update_status_purchases' => 'purchases#update_status_purchases'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
