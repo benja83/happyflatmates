@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
 root 'home#welcome'
-get 'contact' =>'home#contact'
 
-resources :flats do
-  resources :events
-  resources :purchases
+resources :flats, :only => [:index,  :show] do
+  resources :events, :only => [:index,  :new, :create]
+  resources :purchases, :only => [:index,  :new, :create]
+  resources :bills
 
 end
-resources :users
+resources :users, :only => [:index,:show, :new, :create]
 
 get '/add_flat/:id' => 'users#add_flat'
 put '/update_flat_id' => 'users#update_flat_id'
