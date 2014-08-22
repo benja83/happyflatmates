@@ -67,6 +67,7 @@ RSpec.describe PurchasesController, :type => :controller do
     end
   end
 
+
   context "update_status_purchases method" do
     before(:each) do
       @flat = Flat.create name: "marina", address:"carrer de la marina 200 Barcelona"

@@ -4,9 +4,9 @@
   <li class="active">
     <a href="#">Shopping List</a>
   </li>
+<ul>
   <%= form_tag update_status_purchases_path, method: :patch, html: {class: "navbar-form reset-margin", role: "form"} do %>
     <%  @purchases.each do |purchase| %>
-      <li class="disp">
         <table>
           <tr>
             <td class="col-sm-3">
@@ -17,7 +17,6 @@
             </td>
           </tr>
         </table>
-      </li>
     <% end %>
     <%= hidden_field_tag :flat_id, params[:flat_id] %>
     <div><%= submit_tag 'I bought it' %></div>

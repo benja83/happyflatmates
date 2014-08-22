@@ -118,6 +118,14 @@ body {
   }
 }
 
+.user-img {
+  width: 50px;
+  height: 50px;
+}
+.user-name{
+  margin-top: 22px;
+}
+
 .sidebar-bottom-left {
 position: fixed;
 bottom: 0;
@@ -130,13 +138,14 @@ overflow-y: auto;
 background-color: #0bc991;
 border-right: 1px solid #eee;
   .disp {
-    display: none
+    display: none;
   }
   #shopping-list{
     background-color: #0bc991;
     display: inline-block;
   }
 }
+
 
 .sidebar-bottom-left-active {
 position: fixed;
@@ -152,6 +161,15 @@ background-color: #0bc991;
 border-right: 1px solid #eee;
   .disp {
     display: block;
+    float: left;
+    padding: 5px 10px;
+    vertical-align: center;
+    .checkbox-inline-ben{
+      margin-left: 4px;
+    }
+  }
+  .clearfix{
+    clear: both;
   }
   #shopping-list{
     display: inline-block;

@@ -4,11 +4,17 @@
     <li><%= @flat.name %></li>
     <li><%= @flat.address %></li>
   </ul>
-  <ul class="nav nav-sidebar">
-    <li class="active"><a href="#">Flat mates</a></li>
+  <ul class="nav nav-sidebar media-list">
+    <li class="active media"><a href="#">Flat mates</a></li>
     <% @users.each do |user| %>
-      <li>
-        <%= user.name %>
+      <li class="media reset-margin">
+        <a  class="pull-left reset-margin" href='<%= user_path(user.id) %>'>
+          <img src="<%= user.image_url(user.id) %>" alt="" class="media-object user-img img-responsive img-circle">
+        </a>
+        <div class="media-body user-name">
+        <%= user.name %><br>
+        </div>
+
       </li>
     <% end %>
   </ul>
