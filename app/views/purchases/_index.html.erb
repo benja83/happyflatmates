@@ -18,6 +18,7 @@
                 <%= f.hidden_field :flat_id, :value => @flat.id %>
                 <%= f.hidden_field :buyer, :value => User.first.id %>
                 <%= f.hidden_field :name, :value => purchase.name %>
+                <%= f.hidden_field :pending, :value => false %>
                 <%= f.submit "I bought it", class: "form-control"  %>
             <% end %>
           </td>

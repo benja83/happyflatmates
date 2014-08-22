@@ -14,3 +14,6 @@ user4 = User.create name:"Cat", email: "cat@gmail.com", flat_id: flat.id
 user5 = User.create name:"Ben", email: "tarennebenjamin@gmail.com", flat_id: flat.id
 
 Event.create start: DateTime.now, end: DateTime.now + 1.hour, title: "first", flat_id: flat.id
+
+purchase = Purchase.create name: 'oil', flat_id: flat.id
+purchase1 = Purchase.create name: 'water', flat_id: flat.id

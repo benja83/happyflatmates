@@ -1,7 +1,0 @@
-<%= form_for [@flat, @purchase],html: {class: "navbar-form reset-margin", role: "form"} do |f| %>
-    <%= f.text_field :price, class: "form-control", placeholder: "price" %>
-    <%= f.hidden_field :flat_id, :value => @flat.id %>
-    <%= f.hidden_field :buyer, :value => User.first.id %>
-    <%= f.hidden_field :name, :value => @purchase.name %>
-    <%= f.submit "I bought it", class: "form-control"  %>
-<% end %>

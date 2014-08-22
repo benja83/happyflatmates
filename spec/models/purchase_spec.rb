@@ -18,6 +18,4 @@ RSpec.describe Purchase, :type => :model do
     expect(purchase.pending).to eq(true)
   end
 
-
-
 end

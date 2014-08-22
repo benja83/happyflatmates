@@ -7,7 +7,7 @@ class FlatsController < ApplicationController
     @flat = Flat.find(params[:id])
     @users = User.where(:flat_id == params[:id])
     @events  = Event.where(:flat_id == params[:id])
-    @purchases  = Purchase.where(:flat_id == params[:id])
+    @purchases  = Purchase.where(:flat_id == params[:id]).pending?
     @event = Event.new
     @purchase = Purchase.new
   end

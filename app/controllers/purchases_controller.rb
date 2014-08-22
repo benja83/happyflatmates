@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   def index
     flat=Flat.find(params[:flat_id])
-    @purchases = flat.purchases.pending
+    @purchases = flat.purchases.pending?
   end
 
   def new
