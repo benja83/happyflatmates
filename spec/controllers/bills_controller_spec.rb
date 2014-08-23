@@ -4,6 +4,7 @@ RSpec.describe BillsController, :type => :controller do
 
   before(:each) do
         @flat = Flat.create name: "marina", address:"carrer de la marina 200 Barcelona"
+        @user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com", flat_id: @flat.id
   end
 
   context 'index method' do
@@ -19,8 +20,8 @@ RSpec.describe BillsController, :type => :controller do
     end
 
     it "loads all of the bills" do
-      bill1 = Bill.create item: 'mercadona',price: '10', flat_id: @flat.id
-      bill2 = Bill.create item: 'water',price: '50', flat_id: @flat.id
+      bill1 = Bill.create item: 'mercadona',price: '10', flat_id: @flat.id, user_id: @user.id
+      bill2 = Bill.create item: 'water',price: '50', flat_id: @flat.id, user_id: @user.id
       get :index, flat_id: @flat.id
       expect(assigns(:bills)).to match_array([bill1, bill2])
     end
@@ -29,7 +30,7 @@ RSpec.describe BillsController, :type => :controller do
   context "show method" do
 
     before(:each) do
-      @bill = Bill.create item: 'water',price: '50', flat_id: @flat.id
+      @bill = Bill.create item: 'water',price: '50', flat_id: @flat.id, user_id: @user.id
     end
 
     it "renders the show template" do
@@ -41,7 +42,7 @@ RSpec.describe BillsController, :type => :controller do
   context "new method" do
 
     before(:each) do
-      bill = Bill.create item: 'water',price: '50', flat_id: @flat.id
+      bill = Bill.create item: 'water',price: '50', flat_id: @flat.id, user_id: @user.id
       get :new, flat_id: @flat.id,id: bill.id
     end
 
@@ -58,17 +59,17 @@ RSpec.describe BillsController, :type => :controller do
   context "create method" do
 
     before(:each) do
-      @bill = Bill.create item: 'water',price: '50', flat_id: @flat.id
+      @bill = Bill.create item: 'water',price: '50', flat_id: @flat.id, user_id: @user.id
     end
 
-    it "render the index bill template after creating a event" do
+    it "render the index bill template after creating a bill" do
 
-      post :create, flat_id: @flat.id, bill: {item: @bill.item, price: @bill.price, flat_id: @flat.id}
+      post :create, flat_id: @flat.id, bill: {item: @bill.item, price: @bill.price, flat_id: @flat.id, user_id: @user.id}
       expect(response).to redirect_to(flat_bills_path(flat_id: @flat.id))
     end
 
-    it "make a new location" do
-      expect{post :create, flat_id: @flat.id, bill: {item: @bill.item, price: @bill.price, flat_id: @flat.id}}.to change(Bill, :count).by(1)
+    it "make a new bill" do
+      expect{post :create, flat_id: @flat.id, bill: {item: @bill.item, price: @bill.price, flat_id: @flat.id, user_id: @user.id}}.to change(Bill, :count).by(1)
     end
 
     it "should not create new entry with wrong information" do

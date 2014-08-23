@@ -3,6 +3,7 @@ class Bill < ActiveRecord::Base
 
   validates :item, presence: true
   validates :price, presence: true
+  validates :user_id, presence: true
 
 
 

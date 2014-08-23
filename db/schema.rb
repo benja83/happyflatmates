@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822170148) do
+ActiveRecord::Schema.define(version: 20140823162826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bills", force: true do |t|
-    t.decimal  "item"
     t.decimal  "price",      precision: 6, scale: 2
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "flat_id"
+    t.string   "item"
   end
 
   add_index "bills", ["flat_id"], name: "index_bills_on_flat_id", using: :btree
