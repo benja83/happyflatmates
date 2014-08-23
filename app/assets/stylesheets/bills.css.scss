@@ -1,3 +1,9 @@
 // Place all the styles related to the bills controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.small-input.form-control{
+  width: 100px;
+}
+.small-input.form-control:first-child{
+  margin-left: 30px;
+}

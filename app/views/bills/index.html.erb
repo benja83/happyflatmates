@@ -1,0 +1,42 @@
+<%= render '/shared/dashboard/header' %>
+<div class="container-fluid">
+  <div class="row">
+    <%= render '/shared/dashboard/flat_profile' %>
+    <div class="col-sm-5 col-sm-offset-3 col-md-5 col-md-offset-2 main">
+      <div class="container-fluid">
+        <nav class="navbar-header">
+          <h2 class="sub-header">Bills</h2>
+        </nav>
+
+      </div>
+      <div class="row">
+        <%= render 'bills/new' %>
+      </div>
+        <div class="table-responsive">
+          <table class="table table-striped fixed-header">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>User</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%  @bills.each do |bill| %>
+                <tr>
+                  <td><%= bill.item %></td>
+                  <td><%= bill.price %></td>
+                  <td><%= @users.find(bill.user_id).name %></td>
+                  <td><%= bill.created_at.to_date %></td>
+                  <td>
+                    <%= button_to "Edit", edit_flat_bill_path(flat_id: params[:flat_id],id: bill.id), method: 'get', class: "btn btn-info btn-sm" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>

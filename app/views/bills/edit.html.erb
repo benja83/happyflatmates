@@ -2,13 +2,10 @@
   <div class="row">
   <%= f.text_field :item, class: "form-control small-input", placeholder: "item" %>
   <%= f.text_field :price, class: "form-control small-input", placeholder: "price" %>
-  <% if @users %>
-    <% users_array = @users.map { |user| [user.name,user.id ] } %>
-    <%= f.select :user_id, users_array,{},class: "form-control" %>
-  <% end %>
-
+  <% users_array = @users.map { |user| [user.name,user.id ] } %>
+  <%= f.select :user_id, users_array,{},class: "form-control" %>
   <%= f.hidden_field :flat_id, :value => @flat.id %>
-  <%= f.submit "Add new bill", class: "btn btn-primary"  %>
+  <%= f.submit "Edit", class: "btn btn-primary"  %>
   </div>
 
 <% end %>

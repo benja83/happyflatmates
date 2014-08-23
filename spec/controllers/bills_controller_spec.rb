@@ -27,18 +27,6 @@ RSpec.describe BillsController, :type => :controller do
     end
   end
 
-  context "show method" do
-
-    before(:each) do
-      @bill = Bill.create item: 'water',price: '50', flat_id: @flat.id, user_id: @user.id
-    end
-
-    it "renders the show template" do
-      get :show, flat_id: @flat.id, id: @bill.id
-      expect(response).to render_template("show")
-    end
-  end
-
   context "new method" do
 
     before(:each) do

@@ -2,20 +2,16 @@ class BillsController < ApplicationController
 
   def index
     flat = Flat.find(params[:flat_id])
-    @bills = flat.bills
-  end
-
-  def show
-    flat = Flat.find(params[:flat_id])
-    @bill = Bill.find(params[:id])
-    render plain: "You try to cheat", status: 404 if @bill.flat_id != params[:flat_id].to_i
-  rescue ActiveRecord::RecordNotFound
-    render plain: 'Sorry, not found', status: 404
+    @bills = flat.bills.current_month.order('created_at DESC')
+    @flat = Flat.find(params[:flat_id])
+    @users = User.where(:flat_id == params[:id])
+    @bill = Bill.new
   end
 
   def new
     @flat = Flat.find(params[:flat_id])
     @bill = Bill.new
+    @users = User.where(:flat_id == params[:id])
   end
 
   def create
@@ -27,13 +23,14 @@ class BillsController < ApplicationController
       redirect_to action: 'index', controller: 'bills', flat_id: @flat.id
     else
       @errors = @bill.errors.full_messages
-      render 'new'
+      redirect_to action: 'index', controller: 'bills', flat_id: @flat.id
     end
   end
 
   def edit
     @flat = Flat.find(params[:flat_id])
     @bill = Bill.find(params[:id])
+    @users = User.where(:flat_id == params[:id])
   end
 
   def destroy
@@ -46,7 +43,7 @@ class BillsController < ApplicationController
     @flat = Flat.find(params[:flat_id])
     @bill = @flat.bills.find(params[:id])
     if @bill.update_attributes(bill_params)
-        redirect_to action: 'show', id: @bill.id
+        redirect_to action: 'index'
         flash[:notice] = "Bill updated!"
     else
         @errors = @bill.errors.full_messages

@@ -29,13 +29,7 @@
         <h1>Welcome to Happy flatmate!</h1>
         <h2>A useful app to make sharing flat an amazing experience!</h2>
       </header>
-        <% if @errors %>
-        <ul>
-          <% @errors.each do |error| %>
-          <li> <%= error %> </li>
-          <% end %>
-        </ul>
-        <% end %>
+        <%= render '/shared/error' %>
         <div class="container">
           <%= form_for @user, html: {class: "form-signin", role: "form"} do |f| %>
             <h2 class="form-signup-heading">Please sign up</h2>

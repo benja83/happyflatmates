@@ -16,6 +16,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Your flat", flat_path(@flat.id)  %></li>
+        <li><%= link_to "Your bills", flat_bills_path(@flat.id)  %></li>
         <li><%= link_to"Profile", user_path(1) %></li>
       </ul>
     </nav>
