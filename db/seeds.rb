@@ -18,3 +18,11 @@ Event.create start: DateTime.now, end: DateTime.now + 1.hour, title: "first", fl
 
 purchase = Purchase.create name: 'oil', flat_id: flat.id
 purchase1 = Purchase.create name: 'water', flat_id: flat.id
+
+item_option = ["Carrefour","Internet","Mercadona","Hardware store","Water suply","Electricity"]
+
+100.times do
+  price = ([*0..70].sample + [*0..100].sample / 100)
+  bill = Bill.new item: item_option.sample, price: price, flat_id: flat.id
+  expect(bill.valid?).to eq(true)
+end

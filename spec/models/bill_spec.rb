@@ -13,4 +13,19 @@ RSpec.describe Bill, :type => :model do
     expect(bill.valid?).to eq(true)
   end
 
+  it "create a bill if it has a item, price and flat id" do
+
+    item_option = ["Carrefour","Internet","Mercadona","Hardware store","Water suply","Electricity"]
+
+    flat = Flat.create name: "marina", address: "carrer de la marina 200 Barcelona"
+
+    100.times do
+      price = ([*0..70].sample + [*0..100].sample / 100)
+      bill = Bill.new item: item_option.sample, price: price, flat_id: flat.id
+      expect(bill.valid?).to eq(true)
+    end
+  end
+
+
+
 end
