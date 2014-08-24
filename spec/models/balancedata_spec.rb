@@ -25,8 +25,8 @@ RSpec.describe Bill, :type => :model do
     balances = Bill.balance_data
     user1 = User.first
     user2 = User.last
-      expect(balances[0][user1.id]).to eq(10.5)
-      expect(balances[0][user2.id]).to eq(15.3)
+      expect(balances[0][:users_total][user1.id]).to eq(10.5)
+      expect(balances[0][:users_total][user2.id]).to eq(15.3)
     end
 
     it 'send the total of bills of one month paid by each user' do
@@ -34,8 +34,8 @@ RSpec.describe Bill, :type => :model do
     balances = Bill.balance_data
     user1 = User.first
     user2 = User.last
-      expect(balances[0][user1.id]).to eq(10.5)
-      expect(balances[0][user2.id]).to eq(15.3)
+      expect(balances[0][:users_total][user1.id]).to eq(10.5)
+      expect(balances[0][:users_total][user2.id]).to eq(15.3)
     end
 
     it 'send the month of the data' do
@@ -53,8 +53,8 @@ RSpec.describe Bill, :type => :model do
     @bill4 = Bill.create item: 'mercadona',price: 10, flat_id: @flat2.id, user_id: @user4.id
 
     balances = Bill.balance_data
-      expect(balances[1][@user3.id]).to eq(30)
-      expect(balances[1][@user4.id]).to eq(10)
+      expect(balances[1][:users_total][@user3.id]).to eq(30)
+      expect(balances[1][:users_total][@user4.id]).to eq(10)
     end
 
   end

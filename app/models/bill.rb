@@ -28,9 +28,11 @@ scope :month, -> (date) { where("created_at >= ? AND created_at <= ?",
               :total => total,
               :total_per_user => total/users_id.length
              }
+      users_total={}
       users_id.each do |user_id|
-        data[user_id] = bills.where(user_id: user_id).sum(:price)
+        users_total[user_id] = bills.where(user_id: user_id).sum(:price)
       end
+      data[:users_total] = users_total
       balances_data << data
     end
 
