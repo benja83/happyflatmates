@@ -5,7 +5,12 @@
     <div class="col-sm-5 col-sm-offset-3 col-md-5 col-md-offset-2 main">
       <div class="container-fluid">
         <nav class="navbar-header">
-          <h2 class="sub-header">Bills</h2>
+          <h2 class="sub-header inline">Bills</h2>
+        </nav>
+        <nav class="navbar-header pull-right">
+          <h3 class="sub-header inline ">
+            <%= @bills[1].created_at.strftime("%B") %> - <%= @bills[1].created_at.year %>
+            </h3>
         </nav>
 
       </div>
@@ -28,7 +33,7 @@
                   <td><%= bill.item %></td>
                   <td><%= bill.price %></td>
                   <td><%= @users.find(bill.user_id).name %></td>
-                  <td><%= bill.created_at.to_date %></td>
+                  <td><%= bill.created_at.to_date.day %></td>
                   <td>
                     <%= button_to "Edit", edit_flat_bill_path(flat_id: params[:flat_id],id: bill.id), method: 'get', class: "btn btn-info btn-sm" %>
                   </td>
