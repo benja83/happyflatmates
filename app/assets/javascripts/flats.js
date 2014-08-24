@@ -1,5 +1,5 @@
 $('.sidebar-bottom-right').hover(
-  function(){
+  function(evt){
   $('.sidebar-bottom-right').addClass('sidebar-bottom-right-active').removeClass('sidebar-bottom-right');
   },
   function(){
