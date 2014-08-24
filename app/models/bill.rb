@@ -8,4 +8,8 @@ class Bill < ActiveRecord::Base
 scope :current_month, -> { where("created_at >= ? AND created_at <= ?",
   Date.today.at_beginning_of_month, Date.today.end_of_month) }
 
+  def self.balance_data
+    {:total => 10}
+  end
+
 end
