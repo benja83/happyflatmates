@@ -2,12 +2,13 @@ class BillsController < ApplicationController
 
   def index
     flat = Flat.find(params[:flat_id])
-    @bills = flat.bills.month(Date.today).order('created_at DESC')
+    @bills = flat.bills.current_month.order('created_at DESC')
     @flat = Flat.find(params[:flat_id])
     @users = User.where(:flat_id == params[:id])
     @bill = Bill.new
     balance = flat.balances.last_month
-    @relations = balance[0].generate_relations_payment
+    puts balance.inspect
+    @relations = balance[0].generate_relations_payment unless balance[0] == nil
   end
 
   def new
