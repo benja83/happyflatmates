@@ -9,7 +9,7 @@
     <% @users.each do |user| %>
       <li class="media reset-margin">
         <a  class="pull-left reset-margin" href='<%= user_path(user.id) %>'>
-          <img src="<%= user.image_url(user.id) %>" alt="" class="media-object user-img img-responsive img-circle">
+          <img src="<%= User.image_url(user.id) %>" alt="" class="media-object user-img img-responsive img-circle">
         </a>
         <div class="media-body user-name">
         <%= user.name %><br>

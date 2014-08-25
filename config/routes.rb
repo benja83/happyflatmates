@@ -6,6 +6,7 @@ resources :flats, :only => [:index,  :show] do
   resources :events, :only => [:index, :show, :new, :create]
   resources :purchases, :only => [:index,  :new, :create]
   resources :bills
+  resources :balances, :only => [:index]
 
 end
 resources :users, :only => [:index,:show, :new, :create]
