@@ -1,0 +1,26 @@
+<div class="table-responsive table-balances">
+  <table class="table table-striped fixed-header">
+    <thead>
+      <tr>
+        <th>Debtor</th>
+        <th>Amount</th>
+        <th>Creaditor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @relations.each do |relation|%>
+        <tr>
+          <td><img src="<%= User.image_url(relation[:debtor]) %>" alt="" class="user-img img-responsive img-circle"><%=  %></td>
+          <td>
+            <div class="text-center">
+            <%= relation[:amount] %> €</div>
+            <div class="text-center">
+              <span class="glyphicon glyphicon-arrow-left"></span>
+              <span class="glyphicon glyphicon-minus"></span><span class="glyphicon glyphicon-arrow-right"></span>
+            </div>
+          </td>
+          <td><img src="<%= User.image_url(relation[:creditor]) %>" alt="" class="user-img img-responsive img-circle pull-right"><%=  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table

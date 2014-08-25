@@ -28,3 +28,9 @@ item_option = ["Carrefour","Internet","Mercadona","Hardware store","Water suply"
   item = item_option.sample
   bill = Bill.create item: item, price: price, flat_id: flat.id, created_at: created_at, user_id: user
 end
+
+i=0
+9.times do
+  Balance.create_balances_users_per_flat(flat.id, Date.today - i.month)
+  i+=1
+end

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
                     format: {with: /[0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/},
                     uniqueness: true
 
-  def image_url(id)
+  def self.image_url(id)
 
       images=['http://media.licdn.com/mpr/mpr/wc_200_200/p/6/005/072/130/2cad0b9.jpg', #janes
       'http://media.licdn.com/mpr/mpr/wc_200_200/p/1/005/07b/2c2/2c34148.jpg', #kiko

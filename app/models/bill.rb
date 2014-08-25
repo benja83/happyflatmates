@@ -8,4 +8,36 @@ class Bill < ActiveRecord::Base
 scope :current_month, -> { where("created_at >= ? AND created_at <= ?",
   Date.today.at_beginning_of_month, Date.today.end_of_month) }
 
+scope :month, -> (date) { where("created_at >= ? AND created_at <= ?",
+  date.at_beginning_of_month, date.end_of_month) }
+
+
+  def self.balance_data(date = Date.today.prev_month)
+
+    bills = Bill.month(date)
+    flats_id = Flat.pluck('DISTINCT id').sort
+
+    users = User.all
+    balances_data = []
+
+    flats_id.each do |flat_id|
+      total = bills.where(flat_id: flat_id).sum(:price)
+      users_id = users.where(flat_id: flat_id).pluck('DISTINCT id')
+      data = {:flat_id => flat_id,
+              :date => date,
+              :total => total,
+              :total_per_user => total/users_id.length
+             }
+      users_total={}
+      users_id.each do |user_id|
+        users_total[user_id] = bills.where(user_id: user_id).sum(:price)
+      end
+      data[:users_total] = users_total
+      balances_data << data
+    end
+
+    return balances_data
+
+  end
+
 end
