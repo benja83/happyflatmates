@@ -12,7 +12,7 @@ scope :month, -> (date) { where("created_at >= ? AND created_at <= ?",
   date.at_beginning_of_month, date.end_of_month) }
 
 
-  def self.balance_data(date = Date.today)
+  def self.balance_data(date = Date.today.prev_month)
 
     bills = Bill.month(date)
     flats_id = Flat.pluck('DISTINCT id').sort

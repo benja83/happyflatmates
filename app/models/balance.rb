@@ -5,8 +5,8 @@ class Balance < ActiveRecord::Base
   scope :current_month, -> { where("date >= ? AND date <= ?",
     Date.today.at_beginning_of_month, Date.today.end_of_month) }
 
-  def self.create_balances_users_per_flat(flat_id,date = Date.today)
-    if !Balance.balance_current_month_exist?(flat_id)
+  def self.create_balances_users_per_flat(flat_id,date = Date.today.prev_month)
+    if !Balance.balance_current_month_exist?(flat_id) && date <= Date.today.prev_month.end_of_month
       array_data = Bill.balance_data
       balances_users_per_flat = {}
       array_data.each_index do |i|
