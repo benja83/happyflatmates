@@ -7,7 +7,6 @@ class BillsController < ApplicationController
     @users = User.where(:flat_id == params[:id])
     @bill = Bill.new
     balance = flat.balances.last_month
-    puts balance.inspect
     @relations = balance[0].generate_relations_payment unless balance[0] == nil
   end
 
