@@ -50,8 +50,6 @@ RSpec.describe Balance, :type => :model do
   context "generate_relations_payment" do
 
     before(:each) do
-      Flat.destroy_all
-      User.destroy_all
 
       @flat1 = Flat.create name: "marina", address: "carrer de la marina 200 Barcelona"
       @user1 = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com", flat_id: @flat1.id
@@ -78,6 +76,34 @@ RSpec.describe Balance, :type => :model do
       expect(balance.generate_relations_payment[0][:amount]).to eq(5)
 
       expect(balance.generate_relations_payment).to eq(relation)
+    end
+
+    it "create an array of hashes containing each relation for 3 user in a flat" do
+      @bill1 = Bill.create item: 'mercadona',price: 0, flat_id: @flat1.id, user_id: @user1.id
+      @bill2 = Bill.create item: 'mercadona',price: 10, flat_id: @flat1.id, user_id: @user2.id
+      @user3 = User.create name:"Jane", email: "mike@gmail.com", flat_id: @flat1.id
+      @bill3 = Bill.create item: 'mercadona',price: 20, flat_id: @flat1.id, user_id: @user3.id
+
+      Balance.create_balances_users_per_flat(@flat1.id, Date.today)
+      balance = Balance.last
+      relation = [{:debtor => @user1.id, :creditor => @user3.id, :amount => 10}]
+
+      expect(balance.generate_relations_payment).to eq(relation)
+    end
+    it "create an array of hashes containing each relation for 3 user in a flat" do
+      #pending because it can't be tested fine cause the accuracy of the division
+      @bill1 = Bill.create item: 'mercadona',price: 5, flat_id: @flat1.id, user_id: @user1.id
+      @bill2 = Bill.create item: 'mercadona',price: 15, flat_id: @flat1.id, user_id: @user2.id
+      @user3 = User.create name:"Jane", email: "mike@gmail.com", flat_id: @flat1.id
+      @bill3 = Bill.create item: 'mercadona',price: 20, flat_id: @flat1.id, user_id: @user3.id
+
+      Balance.create_balances_users_per_flat(@flat1.id, Date.today)
+      balance = Balance.last
+      relation = [{:debtor => @user1.id, :creditor => @user3.id, :amount => 6.67},{:debtor => @user1.id, :creditor => @user2.id, :amount => 1.67}]
+
+      expect(balance.generate_relations_payment).to match_array(relation)
+      expect(balance.generate_relations_payment[0][:amount]).to eq(6.67)
+      expect(balance.generate_relations_payment[1][:amount]).to eq(1.67)
     end
   end
 

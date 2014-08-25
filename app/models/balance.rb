@@ -45,20 +45,20 @@ class Balance < ActiveRecord::Base
           creditor[j] += debtor[i]
           relation << {:debtor => i,
                        :creditor => j,
-                       :amount => debtor[i]
+                       :amount => debtor[i].to_f.round(2).abs
                       }
           debtor.delete(i)
         elsif (debtor[i] + creditor[j]) < 0
           debtor[i] += creditor[j]
           relation << {:debtor => i,
                        :creditor => j,
-                       :amount => creditor[j]
+                       :amount => creditor[j].to_f.round(2)
                       }
           creditor.delete(j)
         else
           relation << {:debtor => i,
                        :creditor => j,
-                       :amount => creditor[j]
+                       :amount => creditor[j].to_f.round(2)
                       }
           creditor.delete(j)
           debtor.delete(i)
