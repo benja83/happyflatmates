@@ -2,21 +2,21 @@
 <div class="container-fluid">
   <div class="row">
     <%= render '/shared/dashboard/flat_profile' %>
-    <div class="col-sm-5 col-sm-offset-3 col-md-5 col-md-offset-2 main">
+    <div class="col-sm-5 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <div class="container-fluid">
         <nav class="navbar-header">
           <h2 class="sub-header inline">Bills</h2>
         </nav>
           <h3 class="sub-header inline">
         <nav class="navbar-header pull-right">
-          <button id="next-month" class="btn btn-default">
-            <span class="glyphicon glyphicon-play"></span>
+          <button id="next-month" class="next_month btn btn-default">
+            <span class="next_month glyphicon glyphicon-play"></span>
           </button>
         </nav>
-        <nav class="navbar-header pull-right">
+        <nav class="navbar-header pull-right col-xs-5">
             <select class="form-control">
-              <option value="">
-                <%= @bills[1].created_at.strftime("%B") %> - <%= @bills[1].created_at.year %>
+              <option value="" id="month">
+                <%= @bills[1].created_at.strftime("%b") %> - <%= @bills[1].created_at.year %>
               </option>
             </select>
         </nav>
@@ -43,7 +43,7 @@
           </thead>
           <tbody>
             <%  @bills.each do |bill| %>
-              <tr>
+              <tr class="bills sr-only">
                 <td><%= bill.item %></td>
                 <td><%= bill.price %></td>
                 <td><%= @users.find(bill.user_id).name %></td>
@@ -51,6 +51,7 @@
                 <td>
                   <%= button_to "Edit", edit_flat_bill_path(flat_id: params[:flat_id],id: bill.id), method: 'get', class: "btn btn-info btn-sm" %>
                 </td>
+                <td class="sr-only"><%= bill.created_at.to_date %></td>
               </tr>
             <% end %>
           </tbody>
@@ -67,3 +68,4 @@
     </div>
   </div>
 </div>
+<div id="current-date" class="sr-only"><%= @bills[0].created_at%></div>
