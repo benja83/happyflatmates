@@ -13,5 +13,65 @@
  *= require fullcalendar
 */
 
+$main-color: rgb(189,189,189);
+#body{
+  background-color: $main-color;
+}
+
+#sidebar-profile{
+  background-color: grey;
+  color: white;
+  li.active a{
+    background-color: lightsteelblue;
+  }
+}
+
+
+#nav-header{
+  color:white;
+}
+
+$navbarBackground: pink;
+$gray-darker:pink;
+//$gray: pink;
+//$gray-lighter: pink;
+// $brand-info $brand-warning $brand-danger
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.btn-primary {
+  background-color: $main-color;
+}
+
+$gray-dark:pink;//text color in main container
+$gray-light: pink;//text color in navbar
+$brand-primary:pink;//botton color and select color text
+$brand-success: pink;//select color text
+$gray: pink;//select color text
+$brand-info:pink;
+$brand-warning:pink;
+$brand-danger:pink;
+
+.jumbotron {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: transparent;
+}
+#home-image{
+  background: url(http://reverandandys.files.wordpress.com/2013/10/friends.jpg) no-repeat center center fixed;
+
+  width: 100%;
+  height: 2000px;
+  position: fixed;
+  z-index: -1;
+  top:0;
+  left: 0;
+  -webkit-filter: blur(4px); -moz-filter: blur(4px); -o-filter: blur(4px); -ms-filter: blur(4px); filter: blur(4px);
+}
+
+#sign-in{
+  color:white;
+}

@@ -1,45 +1,46 @@
+
 <header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
-    <nav class="navbar-header">
+    <nav  class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Happy Flatmates</a>
+      <a id="nav-header" class="navbar-brand" href="#">Happy Flatmates</a>
     </nav>
     <nav class="navbar-collapse collapse">
-      <form class="navbar-form navbar-right" role="form">
+      <form class="navbar-form navbar-right pull-right" role="form">
         <div class="form-group">
           <input type="text" placeholder="Email" class="form-control">
         </div>
         <div class="form-group">
           <input type="password" placeholder="Password" class="form-control">
         </div>
-        <button type="submit" class="btn btn-success"><%= link_to 'Sign in', flat_path(User.first.flat_id)%></button>
+        <button type="submit" class="btn btn-primary"><%= link_to 'Sign in', flat_path(User.first.flat_id), id: "nav-header" %></button>
       </form>
     </nav><!--/.navbar-collapse -->
   </div>
 </header >
 <div class="jumbotron">
   <div class="container">
-    <section>
+    <section id="sign-in">
       <header class="text-center">
-        <h1>Welcome to Happy flatmate!</h1>
-        <h2>A useful app to make sharing flat an amazing experience!</h2>
+        <h2>Happy flatmate!</h2>
+        <h3>A useful app to make flats sharing an amazing experience!</h3>
       </header>
         <%= render '/shared/error' %>
         <div class="container">
           <%= form_for @user, html: {class: "form-signin", role: "form"} do |f| %>
-            <h2 class="form-signup-heading">Please sign up</h2>
+            <h2 class="form-signup-heading text-center">Please sign up</h2>
             <%= f.text_field :name, class: "form-control",placeholder: "name" %> <br/>
             <%= f.text_field :email, class: "form-control", placeholder: "Email address"%> <br/>
             <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
           <% end %>
         </div>
         <br>
-        <%= render '/shared/list_users' %>
+        <h1 class="text-center">Sharing flats! Sharing lives!</h1>
     </section>
   </div>
 </div>
@@ -48,4 +49,5 @@
     <p>Benjamin Tarenne</p>
   </div>
 </div>
+<div id="home-image"></div>
 

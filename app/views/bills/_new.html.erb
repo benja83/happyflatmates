@@ -5,7 +5,7 @@
   <% users_array = @users.map { |user| [user.name,user.id ] } %>
   <%= f.select :user_id, users_array,{},class: "form-control" %>
   <%= f.hidden_field :flat_id, :value => @flat.id %>
-  <%= f.submit "Add new bill", class: "btn btn-primary"  %>
+  <%= f.submit "Add new bill", class: "btn btn-primary", id: "new-bill" %>
   </div>
 
 <% end %>
