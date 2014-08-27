@@ -19,6 +19,9 @@ table{
   background-color: rgba(255,255,255,.35);
   color: white;
   border: 1px solid #dddddd;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow:    2px 2px 2px 0px rgba(0, 0, 0, 0.14);
+  box-shadow:         2px 2px 2px 0px rgba(0, 0, 0, 0.14);
   thead{
     background-color: rgba(255,255,255,.35);
     color: white;
@@ -29,9 +32,17 @@ table{
   background-color: rgba(255,255,255,.35);
   color: white;
   border: 1px solid #dddddd;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow:    2px 2px 2px 0px rgba(0, 0, 0, 0.14);
+  box-shadow:         2px 2px 2px 0px rgba(0, 0, 0, 0.14);
   thead{
     background-color: rgba(255,255,255,.35);
     color: white;
+  }
+  tbody{
+    tr{
+      color: black;
+    }
   }
   tr{
     & td:last-child{

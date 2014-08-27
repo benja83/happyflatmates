@@ -62,6 +62,11 @@ $gray-darker:pink;
   background-color: $main-color;
   border: 1px solid #dddddd;
 }
+.btn-primary[disabled] {
+  background-color: $main-color;
+  border: 1px solid #dddddd;
+}
+
 
 $gray-dark:pink;//text color in main container
 $gray-light: pink;//text color in navbar
@@ -98,6 +103,6 @@ $brand-danger:pink;
 #sign-in{
   color:white;
   h1,h2,h3{
-    text-shadow: 1px 1px 0px black;
+    text-shadow: 2px 2px 2px #444;
   }
 }
