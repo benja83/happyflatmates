@@ -3,53 +3,70 @@
   <div class="row">
     <%= render '/shared/dashboard/flat_profile' %>
     <div class="col-sm-5 col-sm-offset-3 col-md-5 col-md-offset-2 main">
-      <div class="container-fluid">
-        <nav class="navbar-header">
-          <h2 class="sub-header inline">Bills</h2>
-        </nav>
-        <nav class="navbar-header pull-right">
-          <h3 class="sub-header inline ">
-            <%= @bills[1].created_at.strftime("%B") %> - <%= @bills[1].created_at.year %>
-            </h3>
-        </nav>
-
+      <div class="container-fluid reset-padding">
+        <h2 class="sub-header">
+          <div class="inline">Bills</div>
+          <div class="pull-right">
+            <div class="inline">
+              <button id="prev-month" class="next_month btn btn-default">
+                <span class="next_month glyphicon glyphicon-play rotate180"></span>
+              </button>
+            </div>
+            <div class="inline">
+              <button id="month" class="next_month btn btn-default">
+                  <%= @bills[1].created_at.strftime("%b") %> - <%= @bills[1].created_at.year %>
+              </button>
+            </div>
+            <div class="inline">
+              <button id="next-month" class="btn btn-default inline">
+                <span class="glyphicon glyphicon-play"></span>
+              </button>
+            </div>
+          </div>
+        </h2>
       </div>
-      <div class="row">
-        <%= render 'bills/new' %>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-striped fixed-header">
+      <div class="table-responsive table-bills">
+        <table class="table fixed-header">
           <thead>
             <tr>
               <th>Item</th>
               <th>Price</th>
               <th>User</th>
               <th>Date</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <%  @bills.each do |bill| %>
-              <tr>
+              <tr class="bills sr-only">
                 <td><%= bill.item %></td>
                 <td><%= bill.price %></td>
                 <td><%= @users.find(bill.user_id).name %></td>
                 <td><%= bill.created_at.to_date.day %></td>
                 <td>
-                  <%= button_to "Edit", edit_flat_bill_path(flat_id: params[:flat_id],id: bill.id), method: 'get', class: "btn btn-info btn-sm" %>
+                  <%= button_to "Edit", edit_flat_bill_path(flat_id: params[:flat_id],id: bill.id), method: 'get', class: "btn btn-primary btn-sm" %>
                 </td>
+                <td class="sr-only"><%= bill.created_at.to_date %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
       </div>
-    </div>
-    <div class="col-sm-5 col-md-5 main">
-      <div class="container-fluid">
-        <nav class="navbar-header">
-          <h3 class="sub-header inline">Debts from last month?</h3>
-        </nav>
-        <%= render 'balances/index' %>
+      <br>
+      <div id="bill-new" class="container-fluid reset-padding">
+        <%= render 'bills/new' %>
       </div>
     </div>
+    <div class="col-sm-5 col-md-5 main">
+      <div class="container-fluid reset-padding">
+        <h2 class="sub-header">
+          Debts from last month?
+        </h2>
+      </div>
+      <%= render 'balances/index' %>
+    </div>
   </div>
+  <div id="current-date" class="sr-only"><%= @bills[0].created_at%></div>
 </div>
+
+<%= javascript_include_tag 'bills' %>

@@ -9,7 +9,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 
 body {
-  padding-top: 50px;
+  padding-top: 25px;
 }
 
 /*
@@ -26,9 +26,6 @@ body {
  * Hide default border to remove 1px line.
  */
 
-.navbar-fixed-top {
-  border: 0;
-}
 
 /*
  * Sidebar
@@ -43,12 +40,12 @@ body {
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;
-    top: 51px;
+    top: 0;
     bottom: 0;
-    left: 0;
+    left: -15px;
     z-index: 1000;
     display: block;
-    padding: 20px;
+    padding: 0 20px 0 35px;
     overflow-x: hidden;
     overflow-y: auto;
     /* Scrollable contents if viewport is shorter than content. */
@@ -85,7 +82,7 @@ body {
  */
 
 .main {
-  padding: 20px;
+  padding: 40px;
   .page-header {
     margin-top: 0;
   }
@@ -126,23 +123,32 @@ body {
   margin-top: 22px;
 }
 
+.index-purchase{
+  color:white;
+}
+#shopping-list{
+    background-color: #222222;
+}
 .sidebar-bottom-left {
 position: fixed;
 bottom: 0;
-left: 198px;
 z-index: 1000;
 display: block;
 padding: 0;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: #0bc991;
+background-color: #222222;
 border-right: 1px solid #eee;
   .disp {
     display: none;
   }
   #shopping-list{
-    background-color: #0bc991;
     display: inline-block;
+    background-color: rgb(189,189,189);
+  }
+  .active{
+    border: 1px solid #dddddd;
+    background-color: rgb(189,189,189);
   }
 }
 
@@ -150,14 +156,13 @@ border-right: 1px solid #eee;
 .sidebar-bottom-left-active {
 position: fixed;
 bottom: 0;
-left: 198px;
 height: 60%;
 z-index: 1000;
 display: block;
 padding: 0;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: #0bc991;
+background-color: lightslategrey;
 border-right: 1px solid #eee;
   .disp {
     display: block;
@@ -173,9 +178,12 @@ border-right: 1px solid #eee;
   }
   #shopping-list{
     display: inline-block;
+    background-color: rgb(189,189,189);
+
   }
   .active {
-    background-color: #428bca;
+    background-color: rgb(189,189,189);
+    border: 1px solid #dddddd;
   }
 -webkit-animation:   ACTIVE-SIDEBAR-UP 0.5s;
 -moz-animation:    ACTIVE-SIDEBAR-UP 0.5s;
@@ -208,13 +216,13 @@ display: block;
 padding: 0;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: #ba68f9;
 border-right: 1px solid #eee;
   .disp {
     display: none
   }
   #next-event{
-    background-color: #ba68f9;
+    background-color: rgb(189,189,189);
+    border: 1px solid #dddddd;
   }
 }
 
@@ -228,7 +236,7 @@ display: block;
 padding: 0;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: #ba68f9;
+background-color: lightslategrey;
 border-right: 1px solid #eee;
   .disp {
     display: block;
@@ -236,8 +244,13 @@ border-right: 1px solid #eee;
       color: white;
     }
   }
-  .active {
-    background-color: #428bca;
+  .active a {
+    background-color: rgb(189,189,189);
+    border: 1px solid #dddddd;
+    &:hover{
+      background-color: rgb(189,189,189);
+    border: 1px solid #dddddd;
+    }
   }
 -webkit-animation:   ACTIVE-SIDEBAR-UP 0.5s;
 -moz-animation:    ACTIVE-SIDEBAR-UP 0.5s;
@@ -270,6 +283,9 @@ animation:         ACTIVE-SIDEBAR-UP 0.5s;
   padding: 0;
 }
 
+.main-container{
+
+}
 .sidebar-left {
 position: fixed;
 top: 51px;
@@ -280,7 +296,7 @@ display: block;
 padding: 20px;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: #f6c942;
+background-color: grey;
 border-right: 1px solid #eee;
 }
 
@@ -294,7 +310,6 @@ border-right: 1px solid #eee;
   padding: 20px;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #f6c942;
   border-right: 1px solid #eee;
   opacity: 0.95;
   -webkit-animation: ACTIVE-SIDEBAR 1s;
@@ -347,17 +362,33 @@ html .fc {
     vertical-align: top;
   }
 }
-
+fc-wed fc-col0 fc-widget-header
 /* Header
 ------------------------------------------------------------------------*/
+.fc-day-header{
+  font-size: 1.5em;
+
+}
+.fc td.fc-header-left{
+  padding-left: 1em;
+}
+
+.fc td.fc-header-right{
+  padding-right: 1em;
+}
+
+thead th.fc-widget-header{
+  font-size: 1.5em;
+}
 
 .fc-header td {
   white-space: nowrap;
 }
 
-.fc-header-left {
+.fc-header-left{
   width: 25%;
   text-align: left;
+  padding-left: 20px;
 }
 
 .fc-header-center {
@@ -404,6 +435,7 @@ html .fc {
   .fc-state-active, .ui-state-active {
     z-index: 4;
   }
+
 }
 
 /* buttons edges butting together */
@@ -426,4 +458,7 @@ html .fc {
   position: relative;
   width: 100%;
   overflow: hidden;
+}
+.fc td.fc-header-left{
+  margin-left: 1em;
 }

@@ -2,12 +2,12 @@ class BillsController < ApplicationController
 
   def index
     flat = Flat.find(params[:flat_id])
-    @bills = flat.bills.month(Date.today).order('created_at DESC')
+    @bills = flat.bills.all.order('created_at DESC')
     @flat = Flat.find(params[:flat_id])
     @users = User.where(:flat_id == params[:id])
     @bill = Bill.new
     balance = flat.balances.last_month
-    @relations = balance[0].generate_relations_payment
+    @relations = balance[0].generate_relations_payment unless balance[0] == nil
   end
 
   def new
@@ -53,9 +53,13 @@ class BillsController < ApplicationController
     end
   end
 
+  def change_date
+    render :nothing => true
+  end
+
   private
 
   def bill_params
-    params.require(:bill).permit(:flat_id, :item, :price, :user_id)
+    params.require(:bill).permit(:flat_id, :item, :price, :user_id, :date,:action)
   end
 end

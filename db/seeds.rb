@@ -20,9 +20,10 @@ purchase = Purchase.create name: 'oil', flat_id: flat.id
 purchase1 = Purchase.create name: 'water', flat_id: flat.id
 
 item_option = ["Carrefour","Internet","Mercadona","Hardware store","Water suply","Electricity"]
+users = User.pluck(:id)
 
 100.times do
-  user = User.pluck(:id).sample
+  user = users.sample
   price = [*0..70].sample + rand.round(2)
   created_at = DateTime.now - [*0..6].sample.month - [*0..31].sample.day
   item = item_option.sample

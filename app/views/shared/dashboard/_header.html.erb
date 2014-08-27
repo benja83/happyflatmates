@@ -1,4 +1,4 @@
-<header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<header class="nav-tabs navbar-fixed-top" role="tablist">
   <div class="container-fluid">
     <nav class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -7,17 +7,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Happy flatmates</a>
-      <span class="navbar-brand">Dashboard</span>
+      <%= link_to 'Happy flatmates', :root , class: "navbar-brand", id: "nav-header"%>
+      <span class="navbar-brand" id="nav-header">Dashboard</span>
     </nav>
     <nav class="navbar-collapse collapse">
-      <form class="navbar-form navbar-right">
-        <input type="text" class="form-control" placeholder="Search...">
-      </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Your flat", flat_path(@flat.id)  %></li>
-        <li><%= link_to "Your bills", flat_bills_path(@flat.id)  %></li>
-        <li><%= link_to"Profile", user_path(1) %></li>
+        <li><%= link_to "Your flat", flat_path(@flat.id), id: "nav-header"  %></li>
+        <li><%= link_to "Your bills", flat_bills_path(@flat.id),  id: "nav-header"%></li>
+        <li><%= link_to"Profile", user_path(1),id: "nav-header" %></li>
       </ul>
     </nav>
   </div>
