@@ -7,9 +7,42 @@
 .small-input.form-control:first-child{
   margin-left: 30px;
 }
+table{
+  border-spacing: 0;
+
+}
+.table-responsive{
+  border-spacing: 0;
+
+}
+.table-bills{
+  background-color: rgba(255,255,255,.35);
+  color: white;
+  border: 1px solid #dddddd;
+  thead{
+    background-color: rgba(255,255,255,.35);
+    color: white;
+    border: 0;
+  }
+}
 .table-balances{
+  background-color: rgba(255,255,255,.35);
+  color: white;
+  border: 1px solid #dddddd;
+  thead{
+    background-color: rgba(255,255,255,.35);
+    color: white;
+  }
+  tr{
+    & td:last-child{
+      .user-img{
+        margin-right: 35px;
+      }
+    }
+  }
   .user-img{
     margin-top: 10px;
+    margin-left: 35px;
   }
   th{
     width: 60%;
@@ -25,7 +58,7 @@
     font-size: 1.2em;
   }
   .glyphicon{
-    color: orange;
+    color: grey;
     margin: 0 -6px 0 -6px;
     font-size: 2.5em;
   }
@@ -41,6 +74,23 @@ button .glyphicon.rotate180{
   @include mirror(-1,1);
   transform: scale(-1, 1);
 }
-.navbar-header button{
+.inline{
+  display: inline-block;
+}
+h2.sub-header{
+  color: white;
+  border: 1px solid #dddddd;
+  padding: 5px 20px 5px 20px;
+}
+#prev-month, #month, #next-month{
+  margin-bottom: 5px;
+}
+#bill-new{
+  background-color: transparent;
+  border: 1px solid #dddddd;
 
+}
+
+#new_bill{
+  padding: .5em 0 .5em 0;
 }

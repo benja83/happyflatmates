@@ -9,28 +9,41 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  *= require fullcalendar
+ *= require_tree .
 */
 
 $main-color: rgb(189,189,189);
 #body{
   background-color: $main-color;
 }
+body{
+  padding: 0;
+}
 
 #sidebar-profile{
-  background-color: grey;
+  background-color: rgb(189,189,189);
   color: white;
   li.active a{
-    background-color: lightsteelblue;
+    background-color: rgba(255,255,255,.35);
   }
-  top: 30px;
+  top:51px;
 }
 #calendar{
-  background-color: lightslategrey;
+  margin-top: 1em;
+  background-color: rgba(255,255,255,.35);
   color: white;
+  padding-top: 1em;
 }
+.nav-tabs{
 
+  border-bottom: 1px solid #dddddd;
+}
+.navbar-fixed-top{
+  border-bottom: 1px solid #dddddd;
+  background-color: rgb(189,189,189);
+  top:76px;
+}
 
 #nav-header{
   color:white;
@@ -47,6 +60,7 @@ $gray-darker:pink;
 
 .btn-primary {
   background-color: $main-color;
+  border: 1px solid #dddddd;
 }
 
 $gray-dark:pink;//text color in main container
@@ -67,6 +81,10 @@ $brand-danger:pink;
 }
 #home-image{
   background: url(http://reverandandys.files.wordpress.com/2013/10/friends.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
   width: 100%;
   height: 2000px;
@@ -79,4 +97,7 @@ $brand-danger:pink;
 
 #sign-in{
   color:white;
+  h1,h2,h3{
+    text-shadow: 1px 1px 0px black;
+  }
 }
