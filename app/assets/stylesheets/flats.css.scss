@@ -126,22 +126,26 @@ body {
   margin-top: 22px;
 }
 
+.index-purchase{
+  color:white;
+}
+#shopping-list{
+    background-color: #222222;
+}
 .sidebar-bottom-left {
 position: fixed;
 bottom: 0;
-left: 198px;
 z-index: 1000;
 display: block;
 padding: 0;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: #0bc991;
+background-color: #222222;
 border-right: 1px solid #eee;
   .disp {
     display: none;
   }
   #shopping-list{
-    background-color: #0bc991;
     display: inline-block;
   }
 }
@@ -150,14 +154,13 @@ border-right: 1px solid #eee;
 .sidebar-bottom-left-active {
 position: fixed;
 bottom: 0;
-left: 198px;
 height: 60%;
 z-index: 1000;
 display: block;
 padding: 0;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: #0bc991;
+background-color: lightslategrey;
 border-right: 1px solid #eee;
   .disp {
     display: block;
@@ -175,7 +178,7 @@ border-right: 1px solid #eee;
     display: inline-block;
   }
   .active {
-    background-color: #428bca;
+    background-color: #222222;
   }
 -webkit-animation:   ACTIVE-SIDEBAR-UP 0.5s;
 -moz-animation:    ACTIVE-SIDEBAR-UP 0.5s;
@@ -208,13 +211,12 @@ display: block;
 padding: 0;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: #ba68f9;
 border-right: 1px solid #eee;
   .disp {
     display: none
   }
   #next-event{
-    background-color: #ba68f9;
+    background-color: #222222;
   }
 }
 
@@ -228,7 +230,7 @@ display: block;
 padding: 0;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: #ba68f9;
+background-color: lightslategrey;
 border-right: 1px solid #eee;
   .disp {
     display: block;
@@ -236,8 +238,11 @@ border-right: 1px solid #eee;
       color: white;
     }
   }
-  .active {
-    background-color: #428bca;
+  .active a {
+    background-color: #222222;
+    &:hover{
+      background-color: #222222;
+    }
   }
 -webkit-animation:   ACTIVE-SIDEBAR-UP 0.5s;
 -moz-animation:    ACTIVE-SIDEBAR-UP 0.5s;
@@ -269,7 +274,12 @@ animation:         ACTIVE-SIDEBAR-UP 0.5s;
 .reset-padding{
   padding: 0;
 }
-
+.sidebar-profile{
+  top: 29px;
+}
+.padding-left-8px{
+  padding-left: 0
+}
 .sidebar-left {
 position: fixed;
 top: 51px;
@@ -280,7 +290,7 @@ display: block;
 padding: 20px;
 overflow-x: hidden;
 overflow-y: auto;
-background-color: #f6c942;
+background-color: grey;
 border-right: 1px solid #eee;
 }
 
@@ -294,7 +304,6 @@ border-right: 1px solid #eee;
   padding: 20px;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #f6c942;
   border-right: 1px solid #eee;
   opacity: 0.95;
   -webkit-animation: ACTIVE-SIDEBAR 1s;
@@ -347,9 +356,17 @@ html .fc {
     vertical-align: top;
   }
 }
-
+fc-wed fc-col0 fc-widget-header
 /* Header
 ------------------------------------------------------------------------*/
+.fc-day-header{
+  font-size: 1.5em;
+
+}
+
+thead th.fc-widget-header{
+  font-size: 1.5em;
+}
 
 .fc-header td {
   white-space: nowrap;

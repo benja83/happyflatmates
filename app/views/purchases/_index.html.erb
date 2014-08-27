@@ -7,7 +7,7 @@
   </li>
   <%= form_tag update_status_purchases_path, method: :patch,html: {class: "navbar-form form-signin", role: "form"} do %>
     <%  @purchases.each do |purchase| %>
-      <div class="disp">
+      <div class="disp index-purchase">
         <%= purchase.name %>
         <%= check_box_tag 'bought[]', purchase.id, false, class: 'checkbox-inline checkbox-inline-ben' %>
       </div>

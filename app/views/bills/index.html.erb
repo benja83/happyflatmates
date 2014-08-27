@@ -7,7 +7,6 @@
         <nav class="navbar-header">
           <h2 class="sub-header inline">Bills</h2>
         </nav>
-          <h3 class="sub-header inline">
         <nav class="navbar-header pull-right">
           <button id="next-month" class="next_month btn btn-default">
             <span class="next_month glyphicon glyphicon-play"></span>
@@ -36,6 +35,7 @@
               <th>Price</th>
               <th>User</th>
               <th>Date</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -54,7 +54,7 @@
           </tbody>
         </table>
       </div>
-      <div class="row">
+      <div>
         <%= render 'bills/new' %>
       </div>
     </div>
@@ -67,6 +67,7 @@
       </div>
     </div>
   </div>
+  <div id="current-date" class="sr-only"><%= @bills[0].created_at%></div>
 </div>
-<div id="current-date" class="sr-only"><%= @bills[0].created_at%></div>
+
 <%= javascript_include_tag 'bills' %>
