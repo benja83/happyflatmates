@@ -14,10 +14,15 @@ user4 = User.create name:"Cat", email: "cat@gmail.com", flat_id: flat.id
 user5 = User.create name:"Ben", email: "tarennebenjamin@gmail.com", flat_id: flat.id
 user6 = User.create name:"Kriss", email: "kriss@gmail.com", flat_id: flat.id
 
-Event.create start: DateTime.now, end: DateTime.now + 1.hour, title: "first", flat_id: flat.id
+Event.create start: DateTime.now + 1.day, end: DateTime.now + 1.hour + 1.day, title: "clean the kitchen", flat_id: flat.id, all_day: true
+Event.create start: DateTime.now + 1.month, end: DateTime.now + 1.hour + 1.month , title: "Cami <3", flat_id: flat.id
+Event.create start: DateTime.now  + 12.hour, end: DateTime.now + 13.hour, title: "Ironhack party", flat_id: flat.id
+Event.create start: DateTime.now + 2.day, end: DateTime.now + 1.hour + 2.day, title: "Kriss leave the flat", flat_id: flat.id
 
 purchase = Purchase.create name: 'oil', flat_id: flat.id
 purchase1 = Purchase.create name: 'water', flat_id: flat.id
+purchase2 = Purchase.create name: 'toilet paper', flat_id: flat.id
+purchase3 = Purchase.create name: 'detergent', flat_id: flat.id
 
 item_option = ["Carrefour","Internet","Mercadona","Hardware store","Water suply","Electricity"]
 users = User.pluck(:id)
@@ -33,10 +38,5 @@ end
 i=0
 9.times do
   Balance.create_balances_users_per_flat(flat.id, Date.today - i.month)
-  i+=1
-end
-i=0
-9.times do
-  Balance.create_balances_users_per_flat(2, Date.today - i.month)
   i+=1
 end
