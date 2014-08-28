@@ -22,7 +22,7 @@ body{
 }
 
 #sidebar-profile{
-  background-color: rgb(189,189,189);
+  background-color: rgba(0,0,0,.6);
   color: white;
   li.active a{
     background-color: rgba(255,255,255,.35);
@@ -31,7 +31,7 @@ body{
 }
 #calendar{
   margin-top: 1em;
-  background-color: rgba(255,255,255,.35);
+  background-color: rgba(0,0,0,.35);
   color: white;
   padding-top: 1em;
 }
@@ -61,14 +61,19 @@ $gray-darker:pink;
 .navbar-default{
   background-color: transparent;
 }
+.navbar-fixed-top{
+  background-color: rgba(0,0,0,0.6);
+}
 
 .btn-primary {
-  background-color: $main-color;
+  background-color: rgba(0,0,0,0.4);
   border: 1px solid #dddddd;
+  color: white;
 }
 .btn-primary[disabled] {
-  background-color: $main-color;
+  background-color: rgba(0,0,0,0.6);
   border: 1px solid #dddddd;
+  color: white;
 }
 
 
