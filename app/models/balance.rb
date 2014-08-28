@@ -48,6 +48,8 @@ class Balance < ActiveRecord::Base
 
   def make_relation(creditor,debtor)
     relation = []
+              puts '='*50
+    puts  debtor.inspect
     debtor.each_key do |i|
       creditor.each_key do |j|
         if (debtor[i] + creditor[j]) > 0
@@ -57,6 +59,7 @@ class Balance < ActiveRecord::Base
                        :amount => debtor[i].to_f.round(2).abs
                       }
           debtor.delete(i)
+          break
         elsif (debtor[i] + creditor[j]) < 0
           debtor[i] += creditor[j]
           relation << {:debtor => i,
@@ -71,6 +74,7 @@ class Balance < ActiveRecord::Base
                       }
           creditor.delete(j)
           debtor.delete(i)
+          break
         end
       end
     end

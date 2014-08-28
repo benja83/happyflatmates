@@ -35,3 +35,8 @@ i=0
   Balance.create_balances_users_per_flat(flat.id, Date.today - i.month)
   i+=1
 end
+i=0
+9.times do
+  Balance.create_balances_users_per_flat(2, Date.today - i.month)
+  i+=1
+end
