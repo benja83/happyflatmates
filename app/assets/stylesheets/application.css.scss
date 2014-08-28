@@ -49,6 +49,7 @@ body{
   color:white;
 }
 
+
 $navbarBackground: pink;
 $gray-darker:pink;
 //$gray: pink;
@@ -57,6 +58,9 @@ $gray-darker:pink;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.navbar-default{
+  background-color: transparent;
+}
 
 .btn-primary {
   background-color: $main-color;
