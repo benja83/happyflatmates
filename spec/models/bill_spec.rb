@@ -36,7 +36,7 @@ RSpec.describe Bill, :type => :model do
       user = User.create name:"Jane", email: "jane.buzzlightyear@gmail.com", flat_id: flat.id
 
       @bill1 = Bill.create item: 'mercadona', price: 12, flat_id: flat.id, created_at: Date.today.next_month, user_id: user.id
-      @bill2 = Bill.create item: 'chineese store', price: 1, flat_id: flat.id, user_id: user.id
+      @bill2 = Bill.create item: 'chineese store', price: 1, flat_id: flat.id, created_at: (Date.today - 1.day), user_id: user.id
     end
 
     it "return bills month's date pass in params" do
