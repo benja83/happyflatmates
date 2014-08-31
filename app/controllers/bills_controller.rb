@@ -25,7 +25,7 @@ class BillsController < ApplicationController
       redirect_to action: 'index', controller: 'bills', flat_id: @flat.id
     else
       @errors = @bill.errors.full_messages
-      redirect_to action: 'index', controller: 'bills', flat_id: @flat.id
+      redirect_to action: 'new', controller: 'bills', flat_id: @flat.id
     end
   end
 
