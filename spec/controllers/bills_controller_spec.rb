@@ -64,9 +64,9 @@ RSpec.describe BillsController, :type => :controller do
       expect{post :create, flat_id: @flat.id, bill: {price: @bill.price, flat_id: @flat.id}}.to_not change(Bill,:count)
     end
 
-    xit "should not create new entry with wrong information" do
+    it "should not create new entry with wrong information" do
       post :create, flat_id: @flat.id, bill: {price: @bill.price, flat_id: @flat.id}
-      expect(response).to render_template('new')
+      expect(response).to redirect_to(action: 'new')
     end
   end
 
